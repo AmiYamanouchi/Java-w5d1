@@ -1,0 +1,64 @@
+import java.time.LocalDate;
+
+public class HourlyEmployee extends Employee{
+
+	private double payRate;
+	private double hoursWorking;
+	
+	//constructor 
+	
+	public HourlyEmployee(String firstName,String lastName, String email, LocalDate startDate, String phoneNumber, double payRate, double hoursWorking) {
+		super(firstName, lastName, email, startDate, phoneNumber);
+		setPayRate(payRate);
+		setHoursWorking(hoursWorking);
+	}
+	
+	//getter
+	
+	public double getPayRate() {
+		return payRate;
+	}
+	public double getHoursWorking() {
+		return hoursWorking;
+	}
+	
+
+	//setter
+	public void setPayRate(double payRate) {
+		if(payRate > 0) {
+			this.payRate = payRate;
+		} else {
+			this.payRate = 1;
+		}
+	}
+	public void setHoursWorking(double hoursWorking) {
+		if(hoursWorking > 0 && hoursWorking <= 40) {
+			this.hoursWorking = hoursWorking;
+		} else {
+			this.hoursWorking = 1;
+		}
+	}
+
+	@Override
+	public double calculateIncome() {
+		return payRate * hoursWorking;
+	}
+	
+	@Override
+	public String toString() {
+		return "------ Hourly Employee ------\n" +
+			   super.toString() + 
+			   "\nEmployee Income: " + calculateIncome() + "\n";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

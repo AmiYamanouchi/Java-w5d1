@@ -1,0 +1,54 @@
+import java.time.LocalDate;
+
+public class SalesEmployee extends Employee{
+	
+	private double commitionRate;
+	private int totalSales;
+	
+	//constructor
+	public SalesEmployee(String firstName,String lastName, String email, LocalDate startDate, String phoneNumber, double commitionRate, int totalSales) {
+		super(firstName, lastName, email, startDate, phoneNumber);
+		setCommitionRate(commitionRate);
+		setTotalSales(totalSales);
+		
+	}
+	
+	//getter
+	public double getCommitionRate() {
+		return commitionRate;
+	}
+	public int getTotalSales() {
+		return totalSales;
+	}
+	
+	//setter
+	public void setCommitionRate(double commitionRate) {
+		if(commitionRate > 0) {
+			this.commitionRate = commitionRate;
+		} else {
+			this.commitionRate = 1;
+		}
+		
+	}
+	public void setTotalSales(int totalSales) {
+		this.totalSales = totalSales;
+		if(totalSales > 0) {
+			this.totalSales = totalSales;
+		} else {
+			this.totalSales = 1;
+		}
+	}
+
+	@Override
+	public double calculateIncome() {
+		return totalSales * (commitionRate * 100);
+	}
+	
+	@Override
+	public String toString() {
+		return "------ Salary Employee ------\n" + super.toString() + "\nEmployee Income: " + calculateIncome() + "\n";
+	}
+	
+	
+
+}
